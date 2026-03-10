@@ -1,0 +1,486 @@
+{
+  "name": "Newsletter to LinkedIn Post - Vaibhav Style",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "simple": false,
+        "filters": {
+          "readStatus": "both",
+          "sender": "={{ ['stayingahead@mail.beehiiv.com', 'news@daily.therundown.ai','news@daily.therundown.ai'].join(' OR ') }}\n"
+        },
+        "options": {}
+      },
+      "id": "495264eb-d97f-4b15-b600-f2e1ce8edfe1",
+      "name": "Gmail Trigger - Newsletter Monitor",
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        1440,
+        -304
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "1XIt5uVLiBhfL0n9",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "responses": {
+          "values": [
+            {
+              "content": "=You are a LinkedIn content transformation expert. Your task is to convert newsletter content into comprehensive LinkedIn posts that match Vaibhav Sisinty's distinctive writing style.\n\n⚠️ CRITICAL RULES - FAILURE TO FOLLOW = REJECTED OUTPUT:\n\nRULE 1: ZERO MARKDOWN FORMATTING\n- NO asterisks (*) - not even once\n- NO double asterisks (**) - not even for emphasis\n- NO dashes (-) for lists\n- NO hashtags (#) for headers\n- If you use ANY of these characters, the output is INVALID\n\nRULE 2: ZERO PROMOTIONAL CONTENT\n- NO mention of \"AI Survival Hackbook\"\n- NO \"free gift\" or \"grab it now\"\n- NO promotional offers of any kind\n- NO \"click here\" or download links\n- Skip these sections entirely - pretend they don't exist\n\nRULE 3: PLAIN TEXT + EMOJIS ONLY\n- Use emojis for structure (✅ 🚀 📊 💡 ⚡ 🔥 👇)\n- Use line breaks for spacing\n- 100% copy-paste ready for LinkedIn\n\n---\n\nCONTENT FILTERING (EXECUTE FIRST):\n\nBEFORE writing anything, scan the newsletter and DELETE these sections:\n❌ \"A gift before we begin\"\n❌ \"AI Survival Hackbook\"\n❌ \"Get your [anything] here\"\n❌ \"Free for next two weeks\"\n❌ Any promotional offers\n❌ Any download/signup CTAs\n\nThese sections do NOT exist. Skip them completely. Never mention them.\n\n---\n\nFORMATTING RULES:\n\nINSTEAD OF: **Bold text**\nUSE: Plain text with emoji emphasis ✅\n\nINSTEAD OF: - Bullet point\nUSE: ✅ Emoji-based point\n\nINSTEAD OF: # Header\nUSE: 📊 Emoji section break\n\nINSTEAD OF: Lists with dashes\nUSE: Natural prose with emojis\n\n---\n\nCONTENT DEPTH REQUIREMENTS:\n- Extract ALL key insights from the newsletter (don't summarize superficially)\n- Include specific examples, product names, and data points mentioned\n- Preserve the narrative arc and storytelling elements\n- Maintain the depth and nuance of the original content\n- Aim for 400-600 words (comprehensive but LinkedIn-appropriate)\n- Include concrete details, not just general statements\n\n---\n\nVAIBHAV'S WRITING STYLE RULES:\n\n1. HOOK (First Line):\n   - Bold, provocative statement with emoji\n   - Often includes \"just\" for urgency\n   Example: \"🚨 AI just turned learning upside down.\"\n\n2. AMPLIFIER (Second Line):\n   - \"And I'm not making this up 👇\"\n   - Builds on the hook's drama\n\n3. WHITE SPACE LAW:\n   - Maximum 2-3 lines per paragraph\n   - Use single-line emphasis statements\n   - Strategic emoji placement for visual breaks\n\n4. PACING DEVICE:\n   - Every 150-200 words: \"Let that sink in.\" or \"Think about that.\"\n   \n5. SPECIFIC NUMBERS & EXAMPLES:\n   - Use exact data from newsletter: \"15 learning tools\" not \"many tools\"\n   - Include product names: \"NotebookLM\", \"Perplexity\", \"Claude\"\n   - Mention specific features and capabilities\n   - Include statistics, percentages, dates, timeframes\n\n6. BEFORE/AFTER CONTRAST:\n   - Show transformation clearly\n   - \"In January... By December...\"\n   - Highlight the shift\n\n7. NARRATIVE ARC:\n   - Hook → Context → Examples → Twist/Problem → Insight → Question\n   - Build the story progressively\n   - Include the \"ugly reality\" or counterpoint\n\n8. ADDRESSING THE READER:\n   - \"Here's what this means for you:\"\n   - \"Think about that.\"\n   - \"But here's the twist:\"\n   - Direct engagement throughout\n\n9. DEEP INSIGHTS:\n   - Include unexpected angles from the newsletter\n   - Challenge conventional thinking\n   - Reveal problems alongside solutions\n\n10. QUESTION CTA (Ending):\n    - Philosophical, debate-worthy\n    - NEVER yes/no questions\n    - Reference the core tension from the newsletter\n\n11. EMOJI STRATEGY:\n    - Use 5-8 emojis strategically throughout (not more)\n    - Replace formatting with emojis:\n      → Use ✅ for key points (not bullet dashes)\n      → Use 📊 for data sections\n      → Use 🚀 for future/possibilities\n      → Use 💡 for insights\n      → Use 🔁 for shifts/changes\n      → Use 💬 for questions/discussion\n    - Use 👇 after amplifier line\n    - Common ones: 🚨 ⚡ 🔥 ✅ ❌ 📊 💡 🎯 👀 ✨ 📱 🧠\n\n12. CREDIBILITY STACK:\n    - Include personal testing (\"I tested 15 tools\")\n    - Mention specific products and their features\n    - Use real data and examples from newsletter\n\n---\n\nSTRUCTURE REQUIREMENTS:\n\n✅ EXTRACT the full depth of content:\n- Don't just grab headlines - get the substance\n- Include the examples and specific details\n- Preserve the contrast and tension\n- Keep the storytelling elements\n\n✅ PRESERVE key elements from newsletter:\n- Specific tool names and what they do\n- Statistics and numbers\n- Before/after comparisons  \n- Problems identified\n- Solutions suggested\n- The \"twist\" or counterintuitive insight\n\n✅ BUILD comprehensive narrative:\n- Start with hook + amplifier\n- Add context (what changed, when)\n- Include specific examples with emojis as visual markers\n- Show the problem or tension\n- Add data/proof mid-way\n- Insert \"Let that sink in\" or \"Think about that\"\n- Discuss implications\n- End with philosophical question\n\n---\n\nTONE:\n- Confident but not arrogant\n- Conversational but credible  \n- Bold but not clickbait\n- Provocative but thoughtful\n- Curious, not preachy\n- Balanced (show pros AND cons)\n\n---\n\nFORBIDDEN PATTERNS (WILL CAUSE OUTPUT REJECTION):\n❌ ANY asterisks (* or **)\n❌ ANY dashes for lists (-)\n❌ ANY promotional content\n❌ Generic summaries without specifics\n❌ Superficial content that loses newsletter depth\n❌ Long paragraphs (>3 lines)\n❌ Multiple emojis in same line (max 1-2)\n❌ Yes/no questions as CTAs\n❌ Bullet points with dashes or asterisks\n❌ Losing the \"twist\" or counterpoint from original\n\n---\n\nOUTPUT FORMAT TEMPLATE:\n\n🚨 [Specific hook from newsletter].\n\nAnd I'm not making this up 👇\n\n[Context: what happened this year - 2-3 lines]\n\n[Specific example or data point from newsletter]\n\nThink about that.\n\n[Deep dive into specific tool/example mentioned - NO promotional content here]\n\n✅ [Specific feature 1 from newsletter]\n✅ [Specific feature 2 from newsletter]  \n✅ [Specific feature 3 from newsletter]\n\n[Explain why this matters - the implications]\n\nBut here's the twist:\n\n[The counterpoint or problem from newsletter - preserve this!]\n\n📊 [Data section if newsletter has numbers]\n[Include specific statistics mentioned]\n\n🚀 [Implications and future direction from newsletter]\n\n💬 [Closing question that captures the core dilemma]\n\n#HashtagOne #HashtagTwo #HashtagThree #HashtagFour #HashtagFive #HashtagSix #HashtagSeven #HashtagEight\n\n---\n\nFINAL VALIDATION CHECKLIST:\n\nBefore submitting output, verify:\n✅ ZERO asterisks anywhere (* or **)\n✅ ZERO promotional content mentioned\n✅ Tool names in PLAIN TEXT (not **bold**)\n✅ Emojis used for structure\n✅ 400-600 words\n✅ Specific examples included\n✅ Philosophical question at end\n✅ 8-12 hashtags included\n\nIf ANY of the above fail, REWRITE the entire output.\n\n---\n\nNow transform this newsletter content. REMEMBER: The post MUST end with 8-12 relevant hashtags based on the content topics.\n\n{{ $json.text }}\n\nFINAL OUTPUT FORMAT:\n[Your LinkedIn post content]\n\n#Hashtag1 #Hashtag2 #Hashtag3 #Hashtag4 #Hashtag5 #Hashtag6 #Hashtag7 #Hashtag8 #Hashtag9 #Hashtag10"
+            }
+          ]
+        },
+        "simplify": false,
+        "builtInTools": {
+          "webSearch": {
+            "searchContextSize": "medium"
+          }
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        1664,
+        -304
+      ],
+      "id": "1dce7c17-7a35-46d5-8eb5-af9eb0962b98",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "DNsHG82qILCHP9Za",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1FWz4l7mrtSQQTVEbRAqh-sguDNmaEvuYmr9tWUbsgrg",
+          "mode": "list",
+          "cachedResultName": "linkedin_posts",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1FWz4l7mrtSQQTVEbRAqh-sguDNmaEvuYmr9tWUbsgrg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1FWz4l7mrtSQQTVEbRAqh-sguDNmaEvuYmr9tWUbsgrg/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Date": "=\"{{ $now.format('YYYY-MM-DD HH:mm') }}\"",
+            "News_Letter_subject": "={{ $('Gmail Trigger - Newsletter Monitor').item.json.headers.subject }}",
+            "LinkedIn Post": "={{ $('Message a model').item.json.output[0].content[0].text }}",
+            "Post_Pics_URL": "={{ $json.webViewLink }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "News_Letter_subject",
+              "displayName": "News_Letter_subject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "LinkedIn Post",
+              "displayName": "LinkedIn Post",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Notes",
+              "displayName": "Notes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Post_Pics_URL",
+              "displayName": "Post_Pics_URL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        3488,
+        -304
+      ],
+      "id": "b59f6a85-7970-42f4-a369-f5f2d130ba77",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "dHjpll00Xw3ZnluM",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "responses": {
+          "values": [
+            {
+              "content": "=You are an expert at analyzing LinkedIn posts and determining optimal visual content strategy.\n\nYour task: Analyze this LinkedIn post and decide if images are needed and what they should show.\n\nANALYSIS RULES:\n\n1. WHEN TO GENERATE IMAGES:\n   ✅ Posts about visual concepts (tools, interfaces, products)\n   ✅ Posts with data/statistics (needs visualization)\n   ✅ Posts with before/after comparisons\n   ✅ Posts discussing specific products or features\n   ✅ Posts that would benefit from visual metaphors\n\n2. WHEN NOT TO GENERATE IMAGES:\n   ❌ Pure philosophical or opinion posts\n   ❌ Text-heavy analytical content\n   ❌ Posts focused on questions and discussion\n   ❌ Abstract concepts without clear visual representation\n\n3. IMAGE COUNT GUIDELINES:\n   - 0 images: Abstract/philosophical posts\n   - 1 image: Hero/cover image for visual posts\n   - 2 images: Before/after, comparison, or feature showcase\n   - 3 images: Complex workflows, multiple tools, or step-by-step\n\n4. IMAGE TYPES TO CONSIDER:\n   - Product screenshots/mockups\n   - Data visualizations/charts\n   - Conceptual illustrations\n   - Before/after comparisons\n   - Workflow diagrams\n   - Interface designs\n\nOUTPUT FORMAT:\nReturn ONLY valid JSON with this structure (no markdown, no code blocks):\n\n{\n  \"imageCount\": 0,\n  \"reasoning\": \"Brief explanation of why this number\",\n  \"images\": []\n}\n\nOR if images are needed:\n\n{\n  \"imageCount\": 2,\n  \"reasoning\": \"This post discusses specific tools and includes statistics that need visualization\",\n  \"images\": [\n    {\n      \"purpose\": \"Hero image\",\n      \"description\": \"Detailed DALL-E prompt describing the image\",\n      \"style\": \"photorealistic/illustration/flat design/infographic\"\n    },\n    {\n      \"purpose\": \"Data visualization\",\n      \"description\": \"Detailed DALL-E prompt describing the image\",\n      \"style\": \"infographic/minimal/chart\"\n    }\n  ]\n}\n\nDALL-E PROMPT WRITING GUIDELINES:\n- Be specific and detailed (50-100 words per prompt)\n- Include composition, colors, mood, style\n- Avoid text in images (DALL-E struggles with text)\n- Use professional, LinkedIn-appropriate aesthetics\n- Specify aspect ratio needs if relevant\n\nANALYZE THIS LINKEDIN POST:\n\n{{ $('Message a model').item.json.output[0].content[0].text }}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        2016,
+        -304
+      ],
+      "id": "d6557f08-493c-44f9-97ad-269ca30a21c2",
+      "name": "Analyze Post for Images",
+      "credentials": {
+        "openAiApi": {
+          "id": "DNsHG82qILCHP9Za",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the raw response from OpenAI\nconst rawResponse = $input.first().json.output[0].content[0].text\n\n// Clean up the response (remove any markdown code blocks if present)\nlet cleanedResponse = rawResponse.trim();\ncleanedResponse = cleanedResponse.replace(/```json\\n?/g, '');\ncleanedResponse = cleanedResponse.replace(/```\\n?/g, '');\n\n// Parse JSON\nlet imageAnalysis;\ntry {\n  imageAnalysis = JSON.parse(cleanedResponse);\n} catch (error) {\n  // If parsing fails, return default (no images)\n  console.error('Failed to parse JSON:', error);\n  imageAnalysis = {\n    imageCount: 0,\n    reasoning: \"Failed to parse image analysis\",\n    images: []\n  };\n}\n\n// Get the LinkedIn post from the previous \"Message a model\" node\nconst linkedinPost = $('Message a model').item.json.output[0].content[0].text;\n\n// Get newsletter metadata from Gmail Trigger\nconst newsletterSubject = $('Gmail Trigger - Newsletter Monitor').item.json.subject;\n\n// Format current date/time\nconst now = new Date();\nconst newsletterDate = now.getFullYear() + '-' + \n  String(now.getMonth() + 1).padStart(2, '0') + '-' + \n  String(now.getDate()).padStart(2, '0') + ' ' + \n  String(now.getHours()).padStart(2, '0') + ':' + \n  String(now.getMinutes()).padStart(2, '0');\n\n// Return the parsed data\nreturn {\n  json: {\n    imageCount: imageAnalysis.imageCount || 0,\n    reasoning: imageAnalysis.reasoning || \"\",\n    images: imageAnalysis.images || [],\n    linkedinPost: linkedinPost,\n    newsletterSubject: newsletterSubject,\n    newsletterDate: newsletterDate\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2368,
+        -304
+      ],
+      "id": "cdf79912-ed92-4a89-9611-afbcc17a9327",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "e3275ea2-5b59-47b3-bf2e-c0cefb4144af",
+              "leftValue": "={{ $json.imageCount }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        2592,
+        -304
+      ],
+      "id": "c305a50a-5cd3-43cc-96be-79ce4067a667",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "images",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2816,
+        -304
+      ],
+      "id": "7280cef6-e269-447c-bec2-b7a8e9006d21",
+      "name": "Loop Each Image"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-3-pro-image-preview",
+          "mode": "list",
+          "cachedResultName": "models/gemini-3-pro-image-preview (Nano Banana Pro)"
+        },
+        "prompt": "={{ $json.description }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        3040,
+        -304
+      ],
+      "id": "d47f1a19-ce29-4d79-a3a3-7430e23f3ccb",
+      "name": "Generate an image",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "QzeHhHsUP5ZAuWx0",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "=image_{{ $now.toFormat('yyyyMMdd_HHmmss') }}.png",
+        "driveId": {
+          "__rl": true,
+          "value": "My Drive",
+          "mode": "list",
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1XhK1iuDg7E1f8UcAHBYPM_XamyGWqtZC",
+          "mode": "list",
+          "cachedResultName": "linkedin_post_pics",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1XhK1iuDg7E1f8UcAHBYPM_XamyGWqtZC"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3264,
+        -304
+      ],
+      "id": "1d992448-5536-474d-b2f8-ef848f4b028b",
+      "name": "Upload file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "SJLoyzU4nCn4snZz",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.x.ai/v1/images/generations",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer "
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "model",
+              "value": "grok-imagine-image"
+            },
+            {
+              "name": "prompt",
+              "value": "A collage of London landmarks in a stenciled street-art style"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        3104,
+        -64
+      ],
+      "id": "6eae0f27-2204-4639-8d6c-571cdbd25ef7",
+      "name": "HTTP Request"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Gmail Trigger - Newsletter Monitor": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Analyze Post for Images",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        []
+      ]
+    },
+    "Analyze Post for Images": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Loop Each Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Each Image": {
+      "main": [
+        [
+          {
+            "node": "Generate an image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate an image": {
+      "main": [
+        [
+          {
+            "node": "Upload file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "versionId": "0d421ca5-fbef-4cff-8e4d-41c0caee4b44",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "07275d0e5d533cc3e4bc05789a8922ce0a3a2c6bedab080943fd9f16c34bd005"
+  },
+  "id": "caXh1kT8vhABon1a",
+  "tags": []
+}
